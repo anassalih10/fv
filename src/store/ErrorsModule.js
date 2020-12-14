@@ -8,6 +8,9 @@ export default {
     },
     REMOVE_ERROR(state, payload) {
       state.errors.delete(payload);
+    },
+    CLEAR_MAP(state) {
+      state.errors.clear();
     }
   },
   getters: {
@@ -21,6 +24,9 @@ export default {
     },
     removeError({ commit }, payload) {
       commit("REMOVE_ERROR", payload);
+    },
+    clearMap({ commit }) {
+      commit("CLEAR_MAP");
     }
   }
 };
