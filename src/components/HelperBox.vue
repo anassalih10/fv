@@ -13,10 +13,10 @@
         <div>
           <img src="@/assets/icons/error.png" alt="" />
           <p class="error-text">
-            {{ error[1] }}
+            {{ error[1].content }}
           </p>
         </div>
-        <a @click="goTo(error[0])">Fix it</a>
+        <a @click="goTo(error[0], error[1].tabId)">Fix it</a>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@ export default {
   },
   computed: {
     visible() {
-      return this.hide === true ? "hidden" : "visible";
+      return this.hide === true ? "non-visible" : "visible";
     },
     ...mapGetters(["getErrorsList"]),
     errors() {
@@ -44,7 +44,10 @@ export default {
     }
   },
   methods: {
-    goTo(id) {
+    goTo(id, tabId) {
+      if (tabId != "") {
+        document.getElementById(tabId).click();
+      }
       var $el = jquery("#" + id);
       $el.focus().addClass("error");
     }
@@ -128,7 +131,7 @@ a {
     }
   }
 }
-.hidden .errors-container {
+.non-visible .errors-container {
   height: 0 !important;
 }
 .eye-icon {

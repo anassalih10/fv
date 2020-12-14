@@ -25,6 +25,7 @@ export default {
         min: 0,
         MaxLength: 0,
         MinLength: 0,
+        tabId: "",
         submited: false
       }
     };
@@ -148,7 +149,10 @@ export default {
       } //Checker End
       //Add The Error To Our Errors List State
       if (this.errorMessage !== "") {
-        this.addError({ targetId: rule.targetId, message: this.longMessage });
+        this.addError({
+          targetId: rule.targetId,
+          options: { content: this.longMessage, tabId: rule.tabId }
+        });
         const selector = "#" + rule.targetId;
         if (this.showError !== false) {
           jquery(selector).addClass("error");

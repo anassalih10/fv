@@ -4,7 +4,7 @@ export default {
   },
   mutations: {
     ADD_ERROR(state, payload) {
-      state.errors.set(payload.targetId, payload.message);
+      state.errors.set(payload.targetId, payload.options);
     },
     REMOVE_ERROR(state, payload) {
       state.errors.delete(payload);
